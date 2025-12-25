@@ -71,7 +71,7 @@ git push -u origin main
 
 # 如果出现认证错误，可能需要使用 Personal Access Token
 # 使用此格式: https://<USERNAME>:<TOKEN>@github.com/<USERNAME>/guojing-frontend.git
-git remote set-url origin https://rthrthrth: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@github.com/rthrthrth/guojing-frontend.git
+git remote set-url origin https://<USERNAME>:<YOUR_TOKEN>@github.com/<USERNAME>/guojing-frontend.git
 git push -u origin main
 ```
 
