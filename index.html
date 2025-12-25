@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>国精集团 - 东方本草 养生瑰宝</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'gj-gold': '#B8860B',
+              'gj-dark': '#1C1917',
+              'gj-green': '#2F3E2E',
+              'gj-stone': '#FAFAF8',
+              'gj-light-bg': '#F5F3F0',
+              'gj-accent': '#8C3224',
+              'gj-light-text': '#666157',
+              'gj-border': '#E8E6E1',
+              'gj-gray': '#EFEFED',
+            },
+            fontFamily: {
+              sans: ['"Noto Sans SC"', 'sans-serif'],
+              serif: ['"Noto Serif SC"', 'serif'],
+            },
+            fontSize: {
+              'xs': ['12px', { lineHeight: '1.5' }],
+              'sm': ['14px', { lineHeight: '1.6' }],
+              'base': ['16px', { lineHeight: '1.6' }],
+              'lg': ['18px', { lineHeight: '1.7' }],
+              'xl': ['20px', { lineHeight: '1.7' }],
+              '2xl': ['24px', { lineHeight: '1.75' }],
+              '3xl': ['30px', { lineHeight: '1.8' }],
+              '4xl': ['36px', { lineHeight: '1.8' }],
+              '5xl': ['48px', { lineHeight: '1.85' }],
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        background-color: #FFFFFF;
+        color: #1C1917;
+      }
+      /* Custom scrollbar for chat */
+      .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+      }
+      .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "vite": "https://esm.sh/vite@^7.3.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
