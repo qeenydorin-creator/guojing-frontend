@@ -11,7 +11,6 @@ import YeMuHuaXianSection from './components/YeMuHuaXianSection';
 import { pointsUse, pointsEarn, pointsLedger as apiPointsLedger, fetchPageContent, fetchTraceabilityVideos, TraceabilityVideo } from './services/api';
 import { getMe, logout as supaLogout } from './services/auth';
 import { supabase } from './services/supabaseClient';
-import { installNavigationDebugListeners } from './utils/debugHelpers';
 
 const formatPrice = (price: number) => `¥${price.toLocaleString()}`;
 const formatBJTime = (dateStr: string | Date | undefined): string => {
@@ -345,11 +344,7 @@ export default function App() {
       }
     };
     loadSiteImages();
-    // FIX: Install debug listeners to track navigation issues (can be removed after debugging)
-    if (import.meta.env.DEV) {
-      installNavigationDebugListeners();
-    }
-    
+
     // FIX: Only warn on form submit to avoid breaking editor lifecycle
     const warnFormSubmit = (e: Event) => {
       console.warn('[App] Form submission detected - ensure buttons use type="button" if unintended');
