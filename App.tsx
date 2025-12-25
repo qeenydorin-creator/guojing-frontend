@@ -8,6 +8,7 @@ import CheckoutModal from './components/CheckoutModal';
 import EditableImage from './components/EditableImage';
 import ContactModal from './components/ContactModal';
 import YeMuHuaXianSection from './components/YeMuHuaXianSection';
+import LazyImage from './components/LazyImage';
 import { pointsUse, pointsEarn, pointsLedger as apiPointsLedger, fetchPageContent, fetchTraceabilityVideos, TraceabilityVideo } from './services/api';
 import { getMe, logout as supaLogout } from './services/auth';
 import { supabase } from './services/supabaseClient';
