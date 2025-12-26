@@ -8,7 +8,7 @@ ADD COLUMN IF NOT EXISTS specifications TEXT[];
 
 INSERT INTO public.products (name, price, image_url, description, category, stock, features, usage_method, core_ingredients, suitable_for, specifications, brand, is_active)
 VALUES (
-  '茶说九华·黄精礼盒尊享装',
+  'Product001',
   1980.00,
   'https://zzxkoyzhbdoefsttitop.supabase.co/storage/v1/object/public/products/huangjing-gift-box-premium.jpg',
   '国精集团旗舰礼盒，黑金配色，低调奢华。内含九蒸九晒黄精茶200g，采用九华山道地黄精，历经45天古法炮制。补中益气，滋阴润肺。',
@@ -25,7 +25,7 @@ VALUES (
 
 INSERT INTO public.products (name, price, image_url, description, category, stock, features, usage_method, core_ingredients, suitable_for, specifications, brand, is_active)
 VALUES (
-  '茶说九华·黄精茶臻品版',
+  'Product002',
   1288.00,
   'https://zzxkoyzhbdoefsttitop.supabase.co/storage/v1/object/public/products/jiuhua-premium-tea.jpg',
   '甄选九华山深山黄精，九蒸九晒古法炮制，茶汤红亮，口感醇厚，回甘悠长。采自海拔800米以上野生黄精，富含黄精多糖。',
@@ -42,7 +42,7 @@ VALUES (
 
 INSERT INTO public.products (name, price, image_url, description, category, stock, features, usage_method, core_ingredients, suitable_for, specifications, brand, is_active)
 VALUES (
-  '叶木花仙·黄精手工切片',
+  'Product003',
   368.00,
   'https://zzxkoyzhbdoefsttitop.supabase.co/storage/v1/object/public/products/yemu-slices.jpg',
   '采用5年以上野生黄精，切片均匀，断面角质样，直接泡水或煲汤，滋补首选。精选肉质肥厚的根茎，手工切片。',
@@ -59,7 +59,7 @@ VALUES (
 
 INSERT INTO public.products (name, price, image_url, description, category, stock, features, usage_method, core_ingredients, suitable_for, specifications, brand, is_active)
 VALUES (
-  '叶木花仙·古法黄精芝麻丸',
+  'Product004',
   198.00,
   'https://zzxkoyzhbdoefsttitop.supabase.co/storage/v1/object/public/products/sesame-pills.jpg',
   '传统配方，黑芝麻与黄精的完美融合，以黑养黑，焕发活力，无糖添加。采用九蒸九晒黑芝麻与黄精细粉科学配比。',
@@ -76,7 +76,7 @@ VALUES (
 
 INSERT INTO public.products (name, price, image_url, description, category, stock, features, usage_method, core_ingredients, suitable_for, specifications, brand, is_active)
 VALUES (
-  '茶说九华·传世臻品礼盒',
+  'Product005',
   2888.00,
   'https://zzxkoyzhbdoefsttitop.supabase.co/storage/v1/object/public/products/premium-gift-set.jpg',
   '高端商务伴手礼，包含特级黄精茶与珍藏版原果，尽显尊贵。国精集团年度旗舰礼盒，黑金配色，低调奢华。',
