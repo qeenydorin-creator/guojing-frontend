@@ -120,7 +120,7 @@ VALUES (
 
 INSERT INTO public.products (name, price, image_url, description, category, stock, features, usage_method, core_ingredients, suitable_for, specifications, brand, is_active)
 VALUES (
-  '国精礼盒·传世臻品',
+  '国精礼盒·传世臻品尊享版',
   2888.00,
   'https://zzxkoyzhbdoefsttitop.supabase.co/storage/v1/object/public/products/premium-gift-set.jpg',
   '高端商务伴手礼，包含特级黄精茶与珍藏版原果，尽显尊贵。国精集团年度旗舰礼盒，黑金配色，低调奢华。',
