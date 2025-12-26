@@ -1041,12 +1041,7 @@ export default function App() {
                       <VideoPlayer
                         title={video.title}
                         posterUrl={video.poster_url || 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1200'}
-                        videoUrls={{
-                          '1080p': video.video_url_1080p || video.video_url,
-                          '720p': video.video_url_720p || video.video_url,
-                          '480p': video.video_url_480p || video.video_url,
-                        }}
-                        defaultQuality="720p"
+                        videoUrl={video.video_url_720p || video.video_url}
                       />
 
                       <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
