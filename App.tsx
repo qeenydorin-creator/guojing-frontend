@@ -204,8 +204,9 @@ const Footer = ({ setPage, onOpenContact }: { setPage: (page: Page) => void; onO
       <div>
         <h4 className="font-bold text-white mb-5 text-lg">联系我们</h4>
         <ul className="space-y-3 text-sm">
-          <li className="flex items-center gap-3 hover:text-gj-gold transition-colors duration-200"><Phone size={16} className="text-gj-gold flex-shrink-0"/> 400-888-9999</li>
-          <li className="flex items-center gap-3 hover:text-gj-gold transition-colors duration-200"><Mail size={16} className="text-gj-gold flex-shrink-0"/> service@guojing.com</li>
+          <li className="flex items-center gap-3 hover:text-gj-gold transition-colors duration-200"><Phone size={16} className="text-gj-gold flex-shrink-0"/> 官方售后电话：4008566001</li>
+          <li className="flex items-center gap-3 hover:text-gj-gold transition-colors duration-200"><Phone size={16} className="text-gj-gold flex-shrink-0"/> 官方手机电话：19956618186</li>
+          <li className="flex items-center gap-3 hover:text-gj-gold transition-colors duration-200"><Mail size={16} className="text-gj-gold flex-shrink-0"/> chashuojiuhua@qygjsw.com.cn</li>
           <li className="flex items-start gap-3 hover:text-gj-gold transition-colors duration-200"><MapPin size={16} className="text-gj-gold flex-shrink-0 mt-1"/> 安徽省池州市九华山风景区</li>
         </ul>
       </div>
@@ -1230,14 +1231,14 @@ export default function App() {
                     <p className="text-sm text-stone-500">工作时间: 9:00 - 18:00</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-gj-green/10 rounded-full">
                     <Mail className="text-gj-green" size={24} />
                   </div>
                   <div>
                     <h3 className="font-bold text-gj-dark mb-2">客服邮箱</h3>
-                    <p className="text-lg font-bold text-gj-dark mb-1">service@guojing.com</p>
+                    <p className="text-lg font-bold text-gj-dark mb-1">chashuojiuhua@qygjsw.com.cn</p>
                     <p className="text-sm text-stone-500">我们会在24小时内回复您的邮件</p>
                   </div>
                 </div>
