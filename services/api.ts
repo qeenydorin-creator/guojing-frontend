@@ -173,7 +173,10 @@ export interface TraceabilityVideo {
   id: string;
   title: string;
   description: string;
-  video_url: string;
+  video_url: string;              // 保留原字段（兼容性）
+  video_url_1080p?: string;       // 新增：高清版
+  video_url_720p?: string;        // 新增：标清版
+  video_url_480p?: string;        // 新增：流畅版
   poster_url: string;
   is_active: boolean;
   display_order: number;

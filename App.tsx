@@ -10,6 +10,7 @@ import ContactModal from './components/ContactModal';
 import YeMuHuaXianSection from './components/YeMuHuaXianSection';
 import LazyImage from './components/LazyImage';
 import { pointsUse, pointsEarn, pointsLedger as apiPointsLedger, fetchPageContent, fetchTraceabilityVideos, TraceabilityVideo } from './services/api';
+import VideoPlayer from './src/components/VideoPlayer';
 import { getMe, logout as supaLogout } from './services/auth';
 import { supabase } from './services/supabaseClient';
 
@@ -1037,16 +1038,16 @@ export default function App() {
                     </div>
 
                     <div className="max-w-5xl mx-auto">
-                      <div className="relative aspect-video bg-gj-gray rounded-xl overflow-hidden shadow-lg border border-gj-border">
-                        <video
-                          className="w-full h-full object-cover"
-                          controls
-                          poster={video.poster_url || 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1200'}
-                        >
-                          <source src={video.video_url} type="video/mp4" />
-                          您的浏览器不支持视频播放。
-                        </video>
-                      </div>
+                      <VideoPlayer
+                        title={video.title}
+                        posterUrl={video.poster_url || 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1200'}
+                        videoUrls={{
+                          '1080p': video.video_url_1080p || video.video_url,
+                          '720p': video.video_url_720p || video.video_url,
+                          '480p': video.video_url_480p || video.video_url,
+                        }}
+                        defaultQuality="720p"
+                      />
 
                       <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div className="bg-white rounded-lg p-6 border border-gj-border shadow-sm hover:shadow-md transition-all duration-200">
