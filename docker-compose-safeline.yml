@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  # 雷池 WAF 管理节点
+  safeline-mgt:
+    image: chaitin/safeline-mgt:latest
+    container_name: safeline-mgt
+    restart: always
+    ports:
+      - "9443:9443"
+    volumes:
+      - /data/safeline-waf/mgt:/data
+    environment:
+      - MGT_DOMAIN=safeline-mgt
+      - COMPOSE_PROJECT_NAME=safeline
+    networks:
+      - safeline-network
+    depends_on:
+      - safeline-postgres
+      - safeline-redis
+
+  # 雷池 WAF 网关节点（反向代理）
+  safeline-gateway:
+    image: chaitin/safeline-gateway:latest
+    container_name: safeline-gateway
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /data/safeline-waf/gateway:/data
+    environment:
+      - MGT_DOMAIN=safeline-mgt
+      - LISTEN_PORT=80
+      - COMPOSE_PROJECT_NAME=safeline
+    networks:
+      - safeline-network
+    depends_on:
+      - safeline-mgt
+    expose:
+      - "80"
+      - "443"
+
+  # PostgreSQL 数据库
+  safeline-postgres:
+    image: postgres:15-alpine
+    container_name: safeline-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: safeline
+      POSTGRES_USER: safeline
+      POSTGRES_PASSWORD: safeline_password_123456
+    volumes:
+      - /data/safeline-waf/postgres:/var/lib/postgresql/data
+    networks:
+      - safeline-network
+    command:
+      - "postgres"
+      - "-c"
+      - "max_connections=200"
+
+  # Redis 缓存
+  safeline-redis:
+    image: redis:7-alpine
+    container_name: safeline-redis
+    restart: always
+    volumes:
+      - /data/safeline-waf/redis:/data
+    networks:
+      - safeline-network
+    command: redis-server --requirepass redis_password_123456
+
+networks:
+  safeline-network:
+    driver: bridge
