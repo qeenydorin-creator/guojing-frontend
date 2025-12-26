@@ -7,6 +7,7 @@
 -- =====================================================
 
 ALTER TABLE public.products
+ADD COLUMN IF NOT EXISTS brand TEXT DEFAULT 'Tea Talk Jiuhua', -- 品牌
 ADD COLUMN IF NOT EXISTS features TEXT[], -- 产品特点（数组）
 ADD COLUMN IF NOT EXISTS usage_method TEXT, -- 使用方法
 ADD COLUMN IF NOT EXISTS core_ingredients TEXT[], -- 核心成分（数组）
@@ -20,6 +21,7 @@ ADD COLUMN IF NOT EXISTS specifications TEXT[]; -- 规格选项（数组）
 -- 产品1：黄精茶(9罐礼盒)
 UPDATE public.products
 SET
+  brand = 'Tea Talk Jiuhua',
   features = ARRAY[
     '补中益气，滋阴润肺',
     '增强免疫，改善疲劳',
@@ -50,6 +52,7 @@ WHERE id = '2fe5da87-030d-41d6-9f10-a90ca9e00fa4';
 -- 产品2：黄精茶礼(高档礼盒)
 UPDATE public.products
 SET
+  brand = 'Tea Talk Jiuhua',
   features = ARRAY[
     '高端礼盒包装',
     '九蒸九晒古法工艺',
@@ -79,6 +82,7 @@ WHERE id = '394b8707-6fba-4953-b7f4-71049157eaf5';
 -- 产品3：悟袋装果(美味大果粒)
 UPDATE public.products
 SET
+  brand = 'Yemu Huaxian',
   features = ARRAY[
     '大颗粒黄精原果',
     '开袋即食，方便快捷',
@@ -109,6 +113,7 @@ WHERE id = '466f6078-2d5f-4f70-b2d2-194e6b5556fb';
 -- 产品4：悟袋装果(体验小巧型)
 UPDATE public.products
 SET
+  brand = 'Yemu Huaxian',
   features = ARRAY[
     '小巧便携包装',
     '新客体验装',
