@@ -60,7 +60,7 @@ VALUES (
   2888.00,
   'https://zzxkoyzhbdoefsttitop.supabase.co/storage/v1/object/public/products/premium-gift-set.jpg',
   '高端商务伴手礼',
-  'gift',
+  'tea',
   999,
   'Tea Talk Jiuhua',
   true
