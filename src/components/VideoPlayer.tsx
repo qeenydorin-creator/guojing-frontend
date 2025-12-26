@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 interface VideoPlayerProps {
   title: string;
@@ -12,6 +12,12 @@ export default function VideoPlayer({
   videoUrl,
 }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [hasError, setHasError] = useState(false);
+
+  const handleError = () => {
+    console.error('视频加载失败:', videoUrl);
+    setHasError(true);
+  };
 
   return (
     <div className="relative w-full bg-black rounded-xl overflow-hidden shadow-lg">
@@ -23,10 +29,23 @@ export default function VideoPlayer({
           controls
           poster={posterUrl}
           preload="metadata"
+          crossOrigin="anonymous"
+          onError={handleError}
         >
           <source src={videoUrl} type="video/mp4" />
           您的浏览器不支持视频播放。
         </video>
+
+        {/* 错误提示 */}
+        {hasError && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+            <div className="text-white text-center p-6">
+              <div className="text-5xl mb-4">⚠️</div>
+              <p className="text-lg font-semibold mb-2">视频加载失败</p>
+              <p className="text-sm text-gray-400">请检查网络连接或稍后重试</p>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* 视频信息底部 */}
