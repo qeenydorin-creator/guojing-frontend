@@ -1,0 +1,399 @@
+-- =====================================================
+-- 国精集团产品数据库 SQL 命令
+-- 用于 Supabase 数据库
+-- =====================================================
+
+-- 第一步：为 products 表添加新的字段（产品特点、使用方法、核心成分等）
+-- =====================================================
+
+ALTER TABLE public.products
+ADD COLUMN IF NOT EXISTS features TEXT[], -- 产品特点（数组）
+ADD COLUMN IF NOT EXISTS usage_method TEXT, -- 使用方法
+ADD COLUMN IF NOT EXISTS core_ingredients TEXT[], -- 核心成分（数组）
+ADD COLUMN IF NOT EXISTS suitable_for TEXT[], -- 适用人群（数组）
+ADD COLUMN IF NOT EXISTS specifications TEXT[]; -- 规格选项（数组）
+
+
+-- 第二步：更新现有的4个产品，添加详细信息
+-- =====================================================
+
+-- 产品1：黄精茶(9罐礼盒)
+UPDATE public.products
+SET
+  features = ARRAY[
+    '补中益气，滋阴润肺',
+    '增强免疫，改善疲劳',
+    '抗氧化美容养颜',
+    '调节血糖血脂'
+  ],
+  usage_method = '取3-5克黄精茶，用90-95℃热水冲泡，焖5-8分钟后饮用。可与枸杞、红枣搭配，建议早晚各一次。',
+  core_ingredients = ARRAY[
+    '黄精多糖 ≥25%',
+    '皂苷类成分',
+    '氨基酸',
+    '微量元素'
+  ],
+  suitable_for = ARRAY[
+    '补中益气',
+    '滋阴润肺',
+    '增强免疫',
+    '改善疲劳'
+  ],
+  specifications = ARRAY[
+    '150g 礼盒装',
+    '300g 家庭装',
+    '9罐礼盒装'
+  ],
+  description = '以古法九蒸九晒，滋阴润肺，匠心熬制，层层锁香，呈现独特焦糖香气。每一口都是对时光的敬畏。'
+WHERE id = '2fe5da87-030d-41d6-9f10-a90ca9e00fa4';
+
+-- 产品2：黄精茶礼(高档礼盒)
+UPDATE public.products
+SET
+  features = ARRAY[
+    '高端礼盒包装',
+    '九蒸九晒古法工艺',
+    '补气养阴，健脾润肺',
+    '商务送礼首选'
+  ],
+  usage_method = '取3-5克黄精茶，用90-95℃热水冲泡，焖5-8分钟后饮用。可与枸杞、红枣搭配。',
+  core_ingredients = ARRAY[
+    '黄精多糖 ≥25%',
+    '皂苷类成分',
+    '氨基酸',
+    '微量元素'
+  ],
+  suitable_for = ARRAY[
+    '商务送礼',
+    '孝敬长辈',
+    '养生保健',
+    '改善亚健康'
+  ],
+  specifications = ARRAY[
+    '高档礼盒装',
+    '300g 臻品装'
+  ],
+  description = '甄选九华山深山黄精，历经九次蒸煮、九次晾晒，耗时45天炮制而成。茶汤红亮，口感醇厚，回甘悠长。'
+WHERE id = '394b8707-6fba-4953-b7f4-71049157eaf5';
+
+-- 产品3：悟袋装果(美味大果粒)
+UPDATE public.products
+SET
+  features = ARRAY[
+    '大颗粒黄精原果',
+    '开袋即食，方便快捷',
+    '自然甜味，无糖添加',
+    '便携包装'
+  ],
+  usage_method = '开袋即食，每次3-5粒。也可用于泡茶、煲汤或制作甜品。建议每日食用量不超过30克。',
+  core_ingredients = ARRAY[
+    '黄精多糖',
+    '天然果糖',
+    '膳食纤维',
+    '维生素'
+  ],
+  suitable_for = ARRAY[
+    '办公室零食',
+    '旅行便携',
+    '养生代餐',
+    '下午茶伴侣'
+  ],
+  specifications = ARRAY[
+    '100g 袋装',
+    '250g 袋装',
+    '500g 家庭装'
+  ],
+  description = '精选肥厚黄精果实，低温烘干，保留原果营养。口感软糯，自然香甜，开袋即食。'
+WHERE id = '466f6078-2d5f-4f70-b2d2-194e6b5556fb';
+
+-- 产品4：悟袋装果(体验小巧型)
+UPDATE public.products
+SET
+  features = ARRAY[
+    '小巧便携包装',
+    '新客体验装',
+    '独立密封保鲜',
+    '性价比高'
+  ],
+  usage_method = '开袋即食，每次2-3粒。适合初次尝试黄精的用户。可搭配茶饮或直接食用。',
+  core_ingredients = ARRAY[
+    '黄精多糖',
+    '天然果糖',
+    '膳食纤维'
+  ],
+  suitable_for = ARRAY[
+    '新客体验',
+    '便携零食',
+    '养生尝鲜',
+    '送礼小样'
+  ],
+  specifications = ARRAY[
+    '50g 体验装',
+    '100g 标准装'
+  ],
+  description = '小规格体验装，适合初次尝试黄精口感的用户。精选优质黄精，低温烘干，保留天然营养。'
+WHERE id = '704acbf0-90f0-4b8e-95e8-8b8f1049d939';
+
+
+-- 第三步：插入5个新产品
+-- =====================================================
+
+-- 新产品1：黄精茶礼盒(高档款) - 1980元
+INSERT INTO public.products (
+  name,
+  price,
+  image_url,
+  description,
+  category,
+  stock,
+  features,
+  usage_method,
+  core_ingredients,
+  suitable_for,
+  specifications,
+  brand,
+  is_active
+) VALUES (
+  '黄精茶礼盒(高档款)',
+  1980.00,
+  'https://zzxkoyzhbdoefsttitop.supabase.co/storage/v1/object/public/products/huangjing-gift-box-premium.jpg',
+  '国精集团旗舰礼盒，黑金配色，低调奢华。内含九蒸九晒黄精茶200g，采用九华山道地黄精，历经45天古法炮制。补中益气，滋阴润肺。',
+  'tea',
+  999,
+  ARRAY[
+    '补中益气，滋阴润肺',
+    '增强免疫，改善疲劳',
+    '抗氧化美容养颜',
+    '调节血糖血脂'
+  ],
+  '取3-5克黄精茶，用90-95℃热水冲泡，焖5-8分钟后饮用。可与枸杞、红枣搭配，建议早晚各一次。',
+  ARRAY[
+    '黄精多糖 ≥25%',
+    '皂苷类成分',
+    '氨基酸',
+    '微量元素'
+  ],
+  ARRAY[
+    '商务送礼',
+    '孝敬长辈',
+    '养生保健',
+    '改善亚健康'
+  ],
+  ARRAY[
+    '200g 高档礼盒',
+    '400g 臻品礼盒'
+  ],
+  'Tea Talk Jiuhua',
+  true
+);
+
+-- 新产品2：九华黄精茶·尊享版 - 1288元
+INSERT INTO public.products (
+  name,
+  price,
+  image_url,
+  description,
+  category,
+  stock,
+  features,
+  usage_method,
+  core_ingredients,
+  suitable_for,
+  specifications,
+  brand,
+  is_active
+) VALUES (
+  '九华黄精茶·尊享版',
+  1288.00,
+  'https://zzxkoyzhbdoefsttitop.supabase.co/storage/v1/object/public/products/jiuhua-premium-tea.jpg',
+  '甄选九华山深山黄精，九蒸九晒古法炮制，茶汤红亮，口感醇厚，回甘悠长。采自海拔800米以上野生黄精，富含黄精多糖。',
+  'tea',
+  999,
+  ARRAY[
+    '九蒸九晒古法工艺',
+    '补气养阴，健脾润肺',
+    '汤色如琥珀，入口顺滑',
+    '适合亚健康人群'
+  ],
+  '取3-5克黄精茶，用90-95℃热水冲泡，焖5-8分钟后饮用。第一泡醒茶，第二泡开始品味其独特的焦糖香气。',
+  ARRAY[
+    '黄精多糖 ≥25%',
+    '皂苷类成分',
+    '氨基酸',
+    '维生素B族',
+    '微量元素'
+  ],
+  ARRAY[
+    '长期熬夜人群',
+    '亚健康调理',
+    '免疫力低下',
+    '需要滋补养生'
+  ],
+  ARRAY[
+    '150g 礼盒装',
+    '300g 家庭装'
+  ],
+  'Tea Talk Jiuhua',
+  true
+);
+
+-- 新产品3：叶木花仙·黄精切片 - 368元
+INSERT INTO public.products (
+  name,
+  price,
+  image_url,
+  description,
+  category,
+  stock,
+  features,
+  usage_method,
+  core_ingredients,
+  suitable_for,
+  specifications,
+  brand,
+  is_active
+) VALUES (
+  '叶木花仙·黄精切片',
+  368.00,
+  'https://zzxkoyzhbdoefsttitop.supabase.co/storage/v1/object/public/products/yemu-slices.jpg',
+  '采用5年以上野生黄精，切片均匀，断面角质样，直接泡水或煲汤，滋补首选。精选肉质肥厚的根茎，手工切片。',
+  'supplement',
+  999,
+  ARRAY[
+    '5年以上野生黄精',
+    '手工切片，品质保证',
+    '断面角质状，油润光泽',
+    '保留原始营养成分'
+  ],
+  '每次取3-5片，可直接用保温杯闷泡，或用于炖鸡、煲排骨汤。建议煲汤时加入10-15片，炖煮1-2小时。',
+  ARRAY[
+    '黄精多糖',
+    '皂苷类成分',
+    '氨基酸',
+    '多种维生素'
+  ],
+  ARRAY[
+    '煲汤滋补',
+    '泡水养生',
+    '炖品配料',
+    '日常保健'
+  ],
+  ARRAY[
+    '250g 罐装',
+    '500g 袋装'
+  ],
+  'Yemu Huaxian',
+  true
+);
+
+-- 新产品4：古法黄精芝麻丸 - 198元
+INSERT INTO public.products (
+  name,
+  price,
+  image_url,
+  description,
+  category,
+  stock,
+  features,
+  usage_method,
+  core_ingredients,
+  suitable_for,
+  specifications,
+  brand,
+  is_active
+) VALUES (
+  '古法黄精芝麻丸',
+  198.00,
+  'https://zzxkoyzhbdoefsttitop.supabase.co/storage/v1/object/public/products/sesame-pills.jpg',
+  '传统配方，黑芝麻与黄精的完美融合，以黑养黑，焕发活力，无糖添加。采用九蒸九晒黑芝麻与黄精细粉科学配比。',
+  'supplement',
+  999,
+  ARRAY[
+    '黑芝麻与黄精双重滋补',
+    '无蔗糖添加，健康无负担',
+    '口感软糯，芝麻香浓郁',
+    '以黑补肾，以黄补脾'
+  ],
+  '每日1-2丸，建议早晚各一次，温水送服或直接嚼食。可搭配牛奶或豆浆食用，效果更佳。',
+  ARRAY[
+    '九蒸九晒黑芝麻',
+    '黄精细粉',
+    '天然蜂蜜',
+    '核桃仁'
+  ],
+  ARRAY[
+    '需要补肾养发',
+    '脾胃虚弱人群',
+    '气血不足',
+    '美容养颜'
+  ],
+  ARRAY[
+    '100g (10丸)',
+    '300g (30丸)'
+  ],
+  'Yemu Huaxian',
+  true
+);
+
+-- 新产品5：国精礼盒·传世臻品 - 2888元
+INSERT INTO public.products (
+  name,
+  price,
+  image_url,
+  description,
+  category,
+  stock,
+  features,
+  usage_method,
+  core_ingredients,
+  suitable_for,
+  specifications,
+  brand,
+  is_active
+) VALUES (
+  '国精礼盒·传世臻品',
+  2888.00,
+  'https://zzxkoyzhbdoefsttitop.supabase.co/storage/v1/object/public/products/premium-gift-set.jpg',
+  '高端商务伴手礼，包含特级黄精茶与珍藏版原果，尽显尊贵。国精集团年度旗舰礼盒，黑金配色，低调奢华。',
+  'gift',
+  999,
+  ARRAY[
+    '国精集团年度旗舰礼盒',
+    '特级九制黄精茶200g',
+    '十年陈黄精原果100g',
+    '手工黄精丸一盒'
+  ],
+  '礼盒内含多种产品，各产品使用方法请参考单品说明。建议作为高端商务礼品或孝敬长辈使用。',
+  ARRAY[
+    '特级黄精茶',
+    '十年陈黄精原果',
+    '手工黄精丸',
+    '配套茶具'
+  ],
+  ARRAY[
+    '商务馈赠',
+    '孝敬长辈',
+    '高端送礼',
+    '收藏珍品'
+  ],
+  ARRAY[
+    '至尊礼盒 (茶+果+丸)'
+  ],
+  'Tea Talk Jiuhua',
+  true
+);
+
+
+-- =====================================================
+-- 执行说明：
+-- 1. 复制以上 SQL 命令
+-- 2. 登录 Supabase Dashboard
+-- 3. 进入 SQL Editor
+-- 4. 粘贴并执行 SQL 命令
+-- 5. 检查 products 表，确认数据已正确插入
+-- =====================================================
+
+-- 验证查询（可选）
+-- SELECT id, name, price, category, stock, features, usage_method, core_ingredients
+-- FROM public.products
+-- ORDER BY price DESC;

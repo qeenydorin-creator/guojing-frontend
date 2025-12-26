@@ -389,11 +389,16 @@ export default function App() {
             price: parseFloat(p.price as any) || 0,
             original_price: p.original_price ? parseFloat(p.original_price as any) : undefined,
             stock: p.stock ?? 0,
-            category: 'tea' as const,
+            category: p.category || 'tea' as const,
             imageUrl: p.image_url || p.cover_image || configImages['site_logo'] || '',
             brand: p.brand || 'Tea Talk Jiuhua',
             description_html: p.description_html,
             is_active: p.is_active ?? true,
+            features: p.features || [],
+            usage_method: p.usage_method || '',
+            core_ingredients: p.core_ingredients || [],
+            suitable_for: p.suitable_for || [],
+            specifications: p.specifications || [],
           }));
           setProducts(mapped);
         } else {

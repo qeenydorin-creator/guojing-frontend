@@ -6,15 +6,20 @@ export interface Product {
   price: number;
   original_price?: number;
   stock?: number;
-  category: 'tea' | 'supplement' | 'gift';
+  category: 'tea' | 'supplement' | 'gift' | 'fruit';
   imageUrl: string;
   cover_image?: string;
   brand: 'Tea Talk Jiuhua' | 'Yemu Huaxian';
-  specs?: string[]; 
+  specs?: string[];
   details?: string;
   images?: string[];
   description_html?: string;
   is_active?: boolean;
+  features?: string[]; // 产品特点
+  usage_method?: string; // 使用方法
+  core_ingredients?: string[]; // 核心成分
+  suitable_for?: string[]; // 适用人群
+  specifications?: string[]; // 规格选项
 }
 
 export interface PointsProduct extends Product {
